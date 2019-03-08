@@ -2,7 +2,7 @@ import os
 import sys
 import traceback
 from telegram.ext import Updater, Filters
-from telegram.ext import CommandHandler, ConversationHandler, MassageHandler
+from telegram.ext import CommandHandler, ConversationHandler, MessageHandler
 import tasks
 
 def start(bot, update):
