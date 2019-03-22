@@ -5,9 +5,9 @@ from bs4 import BeautifulSoup
 from telegram.ext import Updater, Filters
 from telegram.ext import MessageHandler
 import calendar as cal
-import tasks
+import tasks_test
 
-Updater = Updater(token=TOKEN) #Token정보
+Updater = Updater(token="TOKEN") # 토큰
 dispatcher = Updater.dispatcher
 Updater.start_polling()
 
@@ -17,16 +17,16 @@ def handler(bot, update):
     chat_id = update.message.chat_id
 
     if "실시간" in text:
-        keyword_list = tasks.KeyWordList()
+        keyword_list = tasks_test.KeyWordList()
         response = '네이버 실시간 검색어입니다\n{}'.format(keyword_list)
     elif "구구단" in text:
-        gugudan_list = tasks.GuguDanList()
+        gugudan_list = tasks_test.GuguDanList()
         response = '구구단입니다\n{}'.format(gugudan_list)
     elif "부산대학교맛집" in text:
-        naver_blog_search_list = list(tasks.naver_blog_search(text))
+        naver_blog_search_list = list(tasks_test.Naver_blog_search(text))
         response = '부산대학교 맛집리스트 입니다.\n{}'.format(naver_blog_search_list)
     elif "달력" in text:
-        calendar_list = tasks.CalendarList()
+        calendar_list = tasks_test.CalendarList()
         response = calendar_list
     else:
         response = '몰라'
