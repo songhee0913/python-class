@@ -22,7 +22,8 @@ def echo(bot, update):
         tasks.GuguDanTask,
         tasks.NaverBlogSearchTask,
         tasks.KeyWordList,
-        tasks.CalendarTask
+        tasks.CalendarTask,
+        tasks.AcademyInfoList
     ]
 
     try:

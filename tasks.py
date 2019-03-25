@@ -91,5 +91,33 @@ class GuguDanTask:
                 gugudan_list += "%d x %d = %d\n" % (number,i,number*i)
 
         return gugudan_list
+        
+class AcademyInfoList:
+    def __init__(self, text):
+        self.text = text
+
+    def is_valid(self): 
+        if '정보공시' in self.text: 
+            return True 
+        else: 
+            return False 
+    def proc(self):
+        academy_info_list = "" 
+        search_url = "http://www.academyinfo.go.kr/popup/pubinfo1690/list.do?schlId=0000014"
+
+        res = requests.get(search_url)
+        html = res.text
+        soup = BeautifulSoup(html, 'html.parser')
+
+        soup = BeautifulSoup(res.content, 'html.parser')
+        title_data = soup.find_all(class_='stitle')
+        count_data = soup.find_all(class_='count')
+        
+        for num in range(len(title_data)):
+            academy_info_list += title_data[num].get_text().strip()+':  '+count_data[num].get_text().strip()+'\n'
+        return academy_info_list
+
+
+
 
 
