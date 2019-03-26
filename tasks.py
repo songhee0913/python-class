@@ -19,8 +19,12 @@ class KeyWordList:
         html = res.text
         soup = BeautifulSoup(html, 'html.parser')
         tag_list = soup.select('.PM_CL_realtimeKeyword_list_base .ah_k')
-        keyword_list = [tag.text for tag in tag_list]
-        keyword_list = '네이버 실시간 검색어입니다\n{}'.format(keyword_list)
+
+        for rank, tag in enumerate(tag_list, 1):
+            label = tag.text
+            keyword_list += '{}: {}\n'.format(rank, label)
+
+        keyword_list = '네이버 실시간 검색어입니다.\n{}'.format(keyword_list)
 
         return keyword_list
 
